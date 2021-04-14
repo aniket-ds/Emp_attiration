@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+
+    <title>Employee Churn</title>
+    <style type="text/css">
+      *{
+        margin:0;
+        padding:0
+       }
+      body{
+          background-image: url(/static/img/blur1.jpg);
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        
+          }
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/static/img/emp_attrition.jpg" alt="" width="250"height="200">
+    <h2 style="color:aliceblue;">Predict Employee Attrition</h2>
+    <p class="lead" style="color:aliceblue;">Below is an example form built to predict the HR Employee Attiration in an Organization</p>
+  </div>
+
+  <div class="row">
+  <div class="col-md-2">
+  </div>
+    <div class="col-md-8">
+      <h4 class="mb-3" style="color:aliceblue;">Employee Details</h4>
+
+
+   <div id="result"></div>
+
+      <form id="predictForm" class="needs-validation" >
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="satisfaction_level" style="color:aliceblue;">Satisfaction Level</label>
+            <input type="text" class="form-control" id="satisfaction_level" placeholder="0.4" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="last_evaluation" style="color:aliceblue;">Last Evaluation</label>
+            <input type="text" class="form-control" id="last_evaluation" placeholder="0.66" value="" required>
+          </div>
+        </div>
+
+		<div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="number_project" style="color:aliceblue;">Number Of Project</label>
+            <input type="text" class="form-control" id="number_project" placeholder="3" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="average_montly_hours" style="color:aliceblue;">Average Montly Hours</label>
+            <input type="text" class="form-control" id="average_montly_hours" placeholder="130" value="" required>
+          </div>
+        </div>
+
+
+		<div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="time_spend_company" style="color:aliceblue;">Time Spend Company</label>
+            <input type="text" class="form-control" id="time_spend_company" placeholder="2" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="work_accident" style="color:aliceblue;">Work Accident</label>
+            <input type="text" class="form-control" id="work_accident" placeholder="0" value="" required>
+          </div>
+        </div>
+
+		<div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="promotion_last_5years" style="color:aliceblue;">Promotion Last 5years</label>
+            <input type="text" class="form-control" id="promotion_last_5years" placeholder="3" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="salary" style="color:aliceblue;">Salary</label>
+            <input type="text" class="form-control" id="salary" placeholder="high" value="" required>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+
+
+
+
+        </div>
+<div class="col-md-2">
+  </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2021 ANIKET PHULGIRKAR</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#predictForm" ).submit(function( event ) {
+
+  // Stop form from submitting normally
+     event.preventDefault();
+
+  // Get some values from elements on the page:
+      var $form = $( this )
+      satisfaction_level = $form.find("input[id='satisfaction_level']" ).val()
+      last_evaluation = $form.find("input[id='last_evaluation']" ).val()
+      number_project = $form.find("input[id='number_project']" ).val()
+      average_montly_hours = $form.find("input[id='average_montly_hours']" ).val()
+      time_spend_company = $form.find("input[id='time_spend_company']" ).val()
+      work_accident = $form.find("input[id='work_accident']" ).val()
+      promotion_last_5years = $form.find("input[id='promotion_last_5years']" ).val()
+      salary = $form.find("input[id='salary']" ).val()
+
+     var settings = {
+  "url": "http://localhost:8000/prediction",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  "data": {
+    "satisfaction_level": satisfaction_level,
+    "last_evaluation": last_evaluation,
+    "number_project": number_project,
+    "average_montly_hours": average_montly_hours,
+    "time_spend_company": time_spend_company,
+    "work_accident": work_accident,
+    "promotion_last_5years": promotion_last_5years,
+    "salary": salary
+  }
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+  $( "#result" ).empty().append('<div class="alert alert-success" role="alert">'+response+'</div>' );
+});
+
+    });
+</script>
+</body>
+</html>
